@@ -18,7 +18,6 @@ import org.junit.Test
  *
  * Test of barometer data contract
  */
-//@RunWith(AndroidJUnit4::class)
 class BarometerDataTest {
 
     val testDbName = "testBarometerDatabase"
