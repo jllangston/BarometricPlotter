@@ -94,7 +94,7 @@ internal abstract class BarometerReadingsDatabase: RoomDatabase() {
         fun getInstance(context: Context, dbName: String):
                 BarometerReadingsDatabase {
             if (INSTANCE == null) {
-                synchronized(BarometerReadingsDatabase::class) {
+                synchronized(BarometerReadingsDatabase::class.java) {
                     INSTANCE = Room.databaseBuilder(
                             context.applicationContext,
                             BarometerReadingsDatabase::class.java,
