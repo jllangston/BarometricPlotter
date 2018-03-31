@@ -7,6 +7,7 @@ import com.jl.barometerlibrary.data.BarometerDataContract
 import com.jl.barometerlibrary.data.impl.BarometerDataFactoryRoom
 import junit.framework.Assert.assertEquals
 import org.junit.Test
+import timber.log.Timber
 
 /**
  * Created by jl on 3/25/18.
@@ -19,6 +20,7 @@ class GetReadingServiceTest {
 
     @Test
     fun runBackgroundService() {
+        Timber.plant(Timber.DebugTree())
         DebugDB.getAddressLog()
         val getReadingService = GetReadingService()
         getReadingService.dbName = testDbName
@@ -40,8 +42,8 @@ class GetReadingServiceTest {
                 .awaitCount(1)
                 .assertNoErrors()
                 .events[0][0]
-        if (readings is List<*>) {
-            return readings.size
+        return if (readings is List<*>) {
+            readings.size
         } else {
             throw IllegalArgumentException()
         }

@@ -7,6 +7,7 @@ import com.github.pwittchen.reactivesensors.library.ReactiveSensors
 import com.jl.barometerlibrary.data.BarometerReading
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import java.util.stream.Collectors
 
 /**
@@ -34,6 +35,7 @@ internal class SensorReadImpl(val context: Context) : SensorReadContract {
                 .buffer(nReadingsToAverage)
                 .map { it.stream().collect(Collectors.averagingDouble { x -> x.toDouble() }) }
                 .map { BarometerReading(it) }
+                .doOnEach { Timber.i("Reading: $it") }
                 .toObservable()
     }
 

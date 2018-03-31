@@ -9,6 +9,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import timber.log.Timber
 
 /**
  * Created by jl on 3/18/18.
@@ -25,6 +26,7 @@ class SensorReadContractTest {
     fun setup() {
         val context = InstrumentationRegistry.getTargetContext()
         readContract = SensorReadFactory().getContract(context)
+        Timber.plant(Timber.DebugTree())
     }
 
     @Test

@@ -7,7 +7,6 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.jl.barometerlibrary.data.BarometerReading
 import com.jl.barometricplotter.plot.IPlot
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
@@ -26,10 +25,6 @@ class AndroidChart(private val lineChart: LineChart): IPlot.View {
 
     override fun plotData(data: List<BarometerReading>) {
         data.forEach { doPlot(it) }
-    }
-
-    override fun plotData(data: Observable<BarometerReading>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun doPlot(reading: BarometerReading) {

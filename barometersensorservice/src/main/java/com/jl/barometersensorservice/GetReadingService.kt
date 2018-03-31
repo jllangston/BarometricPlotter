@@ -6,7 +6,9 @@ import android.content.Intent
 import com.jl.barometerlibrary.data.BarometerDataContract
 import com.jl.barometerlibrary.data.impl.BarometerDataFactoryRoom
 import com.jl.barometerlibrary.rxsensor.SensorReadFactory
+import com.jl.barometerlibrary.util.Utility
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 /**
  * Created by jl on 3/24/18.
@@ -21,8 +23,11 @@ class GetReadingService : IntentService(GetReadingService::class.toString()) {
     override fun onHandleIntent(intent: Intent?) {
         val context = this.applicationContext
         val dataContract = getDataContract(context)
+
         val sensorContract = SensorReadFactory().getContract(context)
 
+
+        Timber.i("Retrieving reading at ${Utility().currentTimeAsDate()}")
         val data = sensorContract.getPressureReading()
                 .subscribeOn(Schedulers.computation())
                 .blockingFirst()
@@ -30,10 +35,10 @@ class GetReadingService : IntentService(GetReadingService::class.toString()) {
     }
 
     private fun getDataContract(context: Context) : BarometerDataContract {
-        if (dbName.isBlank()) {
-            return BarometerDataFactoryRoom().getContract(context)
+        return if (dbName.isBlank()) {
+            BarometerDataFactoryRoom().getContract(context)
         } else {
-            return BarometerDataFactoryRoom().getTestContract(context, dbName)
+            BarometerDataFactoryRoom().getTestContract(context, dbName)
         }
     }
 

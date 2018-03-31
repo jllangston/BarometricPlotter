@@ -2,7 +2,6 @@ package com.jl.barometricplotter.plot
 
 import com.jl.barometerlibrary.data.BarometerReading
 import io.reactivex.Flowable
-import io.reactivex.Observable
 
 
 /**
@@ -15,16 +14,12 @@ interface IPlot {
 
     interface View {
         fun plotData(data: Flowable<BarometerReading>)
-        fun plotData(data: Observable<BarometerReading>)
         fun plotData(data: List<BarometerReading>)
     }
 
     interface Presenter {
-
-        fun getData(): Observable<BarometerReading>
-
+        fun getData(): Flowable<List<BarometerReading>>
         fun getDataPoint(): BarometerReading
-
     }
 
 }

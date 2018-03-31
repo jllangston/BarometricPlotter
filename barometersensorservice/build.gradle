@@ -37,6 +37,8 @@ dependencies {
 
     implementation 'com.amitshekhar.android:debug-db:1.0.3'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
+
+    implementation 'com.jakewharton.timber:timber:4.7.0'
 }
 repositories {
     mavenCentral()

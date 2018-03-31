@@ -12,7 +12,7 @@ data class BarometerReading(val reading: Double, val time: Long = System.current
 
     private val format = SimpleDateFormat("dd-MM:HH-mm-ss.SSS", Locale.ENGLISH)
 
-    fun getDate(ms: Long) : String {
+    private fun getDate(ms: Long) : String {
         val date = Date(ms)
         return format.format(date)
     }

@@ -47,6 +47,8 @@ dependencies {
     // nifty web view for sqlite
     implementation 'com.amitshekhar.android:debug-db:1.0.3'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.jakewharton.timber:timber:4.7.0'
 }
 repositories {
     mavenCentral()
