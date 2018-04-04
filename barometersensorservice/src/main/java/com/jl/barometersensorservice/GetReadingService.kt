@@ -21,6 +21,7 @@ class GetReadingService : IntentService(GetReadingService::class.toString()) {
     var dbName = ""
 
     override fun onHandleIntent(intent: Intent?) {
+        Timber.d("Handling intent now...")
         val context = this.applicationContext
         val dataContract = getDataContract(context)
 

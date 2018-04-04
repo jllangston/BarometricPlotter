@@ -10,9 +10,14 @@
         android:fullBackupContent="true"
         android:theme="@style/AppTheme">
 
-        <service android:name=".GetReadingService">
-
+        <service
+            android:name=".GetReadingService">
         </service>
+
+        <service android:name=".ReadingJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+        </service>
+
     </application>
 
 </manifest>

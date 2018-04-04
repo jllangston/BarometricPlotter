@@ -60,9 +60,9 @@ data class BarometerReadingDao(
         var timestamp: Long,
     @NonNull @PrimaryKey(autoGenerate = true)
         var id : Long = 0
-) {
-    constructor():this(0.0, 0)
-}
+)
+
+
 
 
 @Dao
