@@ -19,6 +19,7 @@ class ReadingJobServiceTest {
         DebugDB.getAddressLog()
         val context = InstrumentationRegistry.getTargetContext()
 
+        // will be clamped to 15 min
         ServiceJobBuilder(context, 1, 0).scheduleJob()
 
         // should show 3 entries in log
