@@ -1,7 +1,5 @@
 package com.jl.barometerlibrary.data.impl
 
-import android.provider.BaseColumns
-
 /**
  * Created by jl on 2/3/18.
  *
