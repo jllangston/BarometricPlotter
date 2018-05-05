@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -25,6 +24,10 @@ class StartServiceActivity : AppCompatActivity() {
         appData = AppData(this)
         periodToPosMap = mapOf(15 to 0, 30 to 1, 60 to 2)
         posToPeriodMap = mapOf(0 to 15, 1 to 30, 2 to 60)
+
+//        var dbSdUtil = DbCopyUtil(this)
+//        val sdFile = dbSdUtil.toSd("barometerDatabase")
+
 
         setSpinnerElems()
         setButtonVisibility()
@@ -59,7 +62,7 @@ class StartServiceActivity : AppCompatActivity() {
     private fun setSpinnerElems() {
         val arrayAdapter = ArrayAdapter<Int>(this,
                 android.R.layout.simple_spinner_dropdown_item)
-        periodToPosMap.forEach { period, pos ->  arrayAdapter.add(period)}
+        periodToPosMap.forEach { period, _ ->  arrayAdapter.add(period)}
         appData.periodSpinner.adapter = arrayAdapter
     }
 

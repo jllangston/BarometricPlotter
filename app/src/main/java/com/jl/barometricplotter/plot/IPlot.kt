@@ -13,7 +13,6 @@ import io.reactivex.Flowable
 interface IPlot {
 
     interface View {
-        fun plotData(data: Flowable<BarometerReading>)
         fun plotData(data: List<BarometerReading>)
     }
 

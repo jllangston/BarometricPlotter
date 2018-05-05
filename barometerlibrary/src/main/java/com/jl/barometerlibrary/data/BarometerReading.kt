@@ -8,7 +8,8 @@ import java.util.*
  *
  * Barometer data class
  */
-data class BarometerReading(val reading: Double, val time: Long = System.currentTimeMillis()) {
+data class BarometerReading(val reading: Double, val time: Long = System.currentTimeMillis()):
+        Comparable<BarometerReading> {
 
     private val format = SimpleDateFormat("dd-MM:HH-mm-ss.SSS", Locale.ENGLISH)
 
@@ -23,4 +24,9 @@ data class BarometerReading(val reading: Double, val time: Long = System.current
     }
 
     constructor(reading: Float) : this(reading.toDouble())
+
+    override fun compareTo(other: BarometerReading): Int {
+        return time.compareTo(other.time)
+    }
+
 }
