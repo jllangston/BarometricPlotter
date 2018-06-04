@@ -9,44 +9,47 @@ import com.jl.barometerlibrary.data.BarometerDataContract
 import com.jl.barometerlibrary.data.BarometerReading
 import com.jl.barometerlibrary.data.impl.BarometerDataFactoryRoom
 import com.jl.barometricplotter.plot.IPlot
+import com.jl.barometricplotter.plot.PlotType
 import com.jl.barometricplotter.plot.presenter.Presenter
 import com.jl.barometricplotter.plot.view.AndroidPlot
 import io.reactivex.schedulers.Schedulers
 
-class MainActivity : AppCompatActivity(), IPlot.View {
+class MainActivity : AppCompatActivity() {
 
-    lateinit var presenter: IPlot.Presenter
-    lateinit var graphViewPlot : IPlot.View
-    lateinit var dataContract: BarometerDataContract
+    private lateinit var presenter: IPlot.Presenter
+    private lateinit var dataContract: BarometerDataContract
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.notif_small_big)
         dataContract = BarometerDataFactoryRoom().getContract(this)
-        initChart()
         initPresenter()
-        doPlot()
+
+
+        doPlot(initChart(R.id.notif_small, PlotType.NOTIFICATION_SMALL))
+        doPlot(initChart(R.id.notif_big, PlotType.NOTIFICATION_LARGE))
     }
 
-    fun doPlot() {
+    fun doPlot(plotView: IPlot.View) {
         dataContract.getAllData()
                 .subscribeOn(Schedulers.computation())
                 .subscribe {
-                    plotData(it)
+                    plotData(it, plotView)
                 }
     }
 
-    override fun plotData(data: List<BarometerReading>) {
-        graphViewPlot.plotData(data)
+
+    fun plotData(data: List<BarometerReading>, plotView: IPlot.View) {
+        plotView.plotData(data)
     }
 
-    private fun initChart() {
-        val graph = findViewById<View>(R.id.plot) as XYPlot
+    private fun initChart(idPlot: Int, plotType: PlotType): IPlot.View {
+        val graph = findViewById<View>(idPlot) as XYPlot
         graph.clear()
         graph.invalidate()
         graph.setBackgroundColor(0)
-        graphViewPlot = AndroidPlot(graph, LineAndPointFormatter(this,
-                R.xml.line_point_formatter_with_labels), 3)
+        return AndroidPlot(graph, LineAndPointFormatter(this,
+                R.xml.line_point_formatter_with_labels), 3, plotType)
 
     }
 

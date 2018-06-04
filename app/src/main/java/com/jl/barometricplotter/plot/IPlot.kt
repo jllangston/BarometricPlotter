@@ -22,3 +22,7 @@ interface IPlot {
     }
 
 }
+
+enum class PlotType {
+    NORMAL, NOTIFICATION_SMALL, NOTIFICATION_LARGE
+}

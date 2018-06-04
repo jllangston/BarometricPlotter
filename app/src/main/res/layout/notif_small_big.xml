@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ap="http://schemas.android.com/apk/res-auto">
+
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/notif_small"
+        style="@style/FullScreenGraph.Minimalist.Dark"
+        android:layout_width="wrap_content"
+        android:background="@color/ap_charcoal"
+        ap:paddingLeft="10dp"
+        ap:paddingBottom="10dp"
+        ap:paddingTop="10dp"
+        ap:paddingRight="10dp"
+        ap:backgroundColor="@color/ap_charcoal"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/notif_big"
+        style="@style/APDefacto.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="256dp"
+        ap:paddingLeft="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notif_small" />
+</android.support.constraint.ConstraintLayout>

@@ -16,7 +16,10 @@
         android:id="@+id/plot"
         style="@style/APDefacto.Dark"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        ap:paddingLeft="0dp"/>
+        android:layout_height="wrap_content"
+        ap:paddingLeft="0dp"
+        ap:marginLeft="0dp"
+        ap:marginBottom="0dp"
+        ap:paddingBottom="0dp"/>
 
 </android.support.constraint.ConstraintLayout>
